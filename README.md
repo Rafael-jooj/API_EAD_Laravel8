@@ -1,20 +1,8 @@
 
-# Setup Docker Para Projetos Laravel
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+# Documentação
 
 ### Passo a passo
-Clone Repositório
-```sh
-git clone https://github.com/especializati/setup-docker-laravel.git my-project
-cd my-project/
-```
-
-
-Alterne para a branch laravel 8.x
-```sh
-git checkout laravel-8
-```
-
+Clone o Repositório
 
 Remova o versionamento
 ```sh
@@ -31,7 +19,7 @@ cp .env.example .env
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=EspecializaTi
+APP_NAME=API_EAD_Laravel8
 APP_URL=http://localhost:8180
 
 DB_CONNECTION=mysql
