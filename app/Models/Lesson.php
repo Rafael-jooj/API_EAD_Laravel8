@@ -14,4 +14,8 @@ class Lesson extends Model
     protected $keyType = 'uuid';
 
     protected $filable = ['name', 'description', 'video'];
+
+    public function supports(){
+        return $this->hasMany(Support::class);
+    }
 }
