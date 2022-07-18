@@ -13,7 +13,7 @@ class Course extends Model
     public $incrementing = false;
     protected $keyType = 'uuid';
 
-    protected $filable = ['name', 'description', 'image'];
+    protected $fillable = ['name', 'description', 'image'];
 
     public function modules(){
         return $this->hasMany(Module::class);

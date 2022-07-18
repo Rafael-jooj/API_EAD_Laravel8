@@ -13,7 +13,7 @@ class Module extends Model
     public $incrementing = false;
     protected $keyType = 'uuid';
 
-    protected $filable = ['name'];
+    protected $fillable = ['name'];
 
     public function course(){
         return $this->belongsTo(Course::class);

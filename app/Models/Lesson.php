@@ -13,7 +13,7 @@ class Lesson extends Model
     public $incrementing = false;
     protected $keyType = 'uuid';
 
-    protected $filable = ['name', 'description', 'video'];
+    protected $fillable = ['name', 'description', 'video'];
 
     public function supports(){
         return $this->hasMany(Support::class);
