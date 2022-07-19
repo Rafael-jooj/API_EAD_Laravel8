@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Support;
 use App\Models\User;
+use Illuminate\Support\Arr;
 
 class SupportRepository{
     protected $entity;
@@ -30,6 +31,7 @@ class SupportRepository{
                             $query->where('description', 'LIKE', "%{$filter}%");
                         }
                     })
+                    ->orderBy('updated_at')
                     ->get();
     }
 
@@ -44,6 +46,22 @@ class SupportRepository{
                 ]);
 
         return $support;
+    }
+
+    public function createReplyToSupportId(string $supportId, array $data){
+        $user = $this->getUserAuth();
+
+        return $this->getSupport($supportId)
+                    ->replies()
+                    ->create([
+                        'description' => $data['description'],
+                        'user_id' => $user->id,
+                    ]);
+    }
+
+    private function getSupport(string $id)
+    {
+        return $this->entity->findOrFail($id);
     }
 
     private function getUserAuth(): User
