@@ -3,14 +3,22 @@
 use App\Http\Controllers\Api\{
     CourseController, LessonController, ModuleController, ReplySupportController, SupportController
 };
-use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\{
+    AuthController,ResetPasswordController
+};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+//Autenticação
 Route::post('/auth', [AuthController::class, 'auth']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
+//Recuperar senha
+Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLink'])->middleware('guest');
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->middleware('guest');
+
+//Endpoints da api
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/courses', [CourseController::class, 'index']);
     Route::get('/courses/{id}', [CourseController::class, 'course']);
